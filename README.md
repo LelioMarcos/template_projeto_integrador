@@ -1,13 +1,13 @@
-# TRABALHO DE PI:  Título do Trabalho
+# TRABALHO DE PI:  Histórias sem E
 Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 
 # Sumário
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
-primeiro_componente_do_grupo:email_primeiro_componente@dominio.com<br>
-segundo_componente_do_grupo:email_segundo_componente@dominio.com<br>
-...
+Lélio Marcos Rangel Cunha email_primeiro_componente@dominio.com<br>
+Carlos Eungênio Venturin Goldner email_segundo_componente@dominio.com<br>
+Rodolfo Müller do Amaral  email_terceiro_componente@dominio.com<br>
 
 ### 2.MINIMUNDO<br>
 Descrever o mini-mundo! (Não deve ser maior do que 30 linhas, se necessário resumir para justar)
@@ -19,12 +19,7 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
 
 ### 3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
-Neste ponto a codificação não e necessária, somente as ideias de telas devem ser desenvolvidas. O princípio aqui é pensar na criação da interface para identificar possíveis informações a serem armazenadas e/ou descartadas <br>
-
-Sugestão: https://balsamiq.com/products/mockups/<br>
-
-![Alt text](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/balsamiq.png?raw=true "Title")
-![Arquivo PDF do Protótipo Balsamiq feito para Empresa Devcom](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/EmpresaDevcom.pdf?raw=true "Empresa Devcom")
+![Arquivo PDF do Protótipo Balsamiq](arquivos/Prototipo_Navegacao.pdf"Empresa Devcom")
 
 
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
@@ -40,52 +35,90 @@ Sugestão: https://balsamiq.com/products/mockups/<br>
  
 
 ### 4 TABELA DE DADOS DO SISTEMA:
-    A) Esta tabela deve conter **todos os atributos do sistema** e um mínimo de 10 linhas/registros de dados.
-    B) Esta tabela tem a intenção de simular um relatório com todos os dados que serão armazenados 
- <br> (veja o exemplo abaixo antes de criar a tabela para seu trabalho)
-    C) Após criada esta tabela não deve ser modificada, pois será comparada com os resultados finais na conclusão do trabalho
-    
-![Exemplo de Tabela de dados da Empresa Devcom](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/TabelaEmpresaDevCom_sample.xlsx?raw=true "Tabela - Empresa Devcom")
-
- 
- 
+![Exemplo de Tabela de dados da Empresa Devcom](arquivos/Tabela_BD.xlsx "Tabela - Historias sem E")
 
  ### 5.PMC<br>
- ![Exemplo de Tabela de dados da Empresa Devcom](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/PMC.jpg?raw=true "PMC")
+ ![Exemplo de Tabela de dados da Empresa Devcom](arquivos/PMC.png "PMC")
  a) inclusão do PMC desenvolvido pelo grupo
  
  
- ### 6.MODELO CONCEITUAL<br>
-    A) Utilizar a Notação adequada (Preferencialmente utilizar o BR Modelo 3)
-    B) O mínimo de entidades do modelo conceitual pare este trabalho será igual a 3 e o Máximo 5.
-        * informe quais são as 3 principais entidades do sistema em densenvolvimento
- <br>(se houverem mais de 3 entidades, pense na importância da entidade para o sistema)       
-    C) Principais fluxos de informação/entidades do sistema (mínimo 3). <br>Dica: normalmente estes fluxos estão associados as tabelas que conterão maior quantidade de dados 
-    D) Qualidade e Clareza
-        Garantir que a semântica dos atributos seja clara no esquema (nomes coerentes com os dados).
-        Criar o esquema de forma a garantir a redução de informação redundante, possibilidade de valores null, 
-        e tuplas falsas (Aplicar os conceitos de normalização abordados).   
-        
-![Alt text](https://github.com/discproint/template_projeto_integrador/blob/main/arquivos/concept_sample.png?raw=true "Modelo Conceitual")
+ ### 6.MODELO CONCEITUAL<br>       
+![Alt text](arquivos/modConc.png "Modelo Conceitual")
     
       
     
 #### 6.1 Descrição dos dados 
-    [objeto]: [descrição do objeto]
-    
-    EXEMPLO:
-    CLIENTE: Tabela que armazena as informações relativas ao cliente<br>
-    CPF: campo que armazena o número de Cadastro de Pessoa Física para cada cliente da empresa.<br>
+    Historia: Tabela que armazena as informações relativas à história
+    Usuario: Tabela que armazena as informações relativas ao usuário
+    Comentario: Tabela que armazena as informações relativas ao comentario feito pelo usuario em alguma história
+    Genero: Tabela que armazena as informações relativas ao gênero da história.
 
 
 ### 7	MODELO LÓGICO<br>
-        a) inclusão do esquema lógico do banco de dados
-        b) verificação de correspondencia com o modelo conceitual 
-        (não serão aceitos modelos que não estejam em conformidade)
+![Alt text](arquivos/modLog.png "Modelo Lógico")
 
 ### 8	MODELO FÍSICO<br>
-        a) inclusão das instruções de criacão das estruturas em SQL/DDL 
-        (criação de tabelas, alterações, etc..) 
+```sql
+CREATE TABLE Historia (
+    idHist INT PRIMARY KEY,
+    nomHist VARCHAR,
+    idUsuario INT,
+    idGenero VARCHAR,
+    dscSinopseHist VARCHAR,
+    linkCapaHist VARCHAR,
+    notaHist DECIMAL(10,2),
+    dscCorpoHist VARCHAR
+);
+
+CREATE TABLE Usuario (
+    idUsuario INT PRIMARY KEY,
+    nomUsuario VARCHAR,
+    dscEmailUsuario VARCHAR,
+    senhaUsuario VARCHAR,
+    dscBioUsuario VARCHAR,
+    linkFotoUsuario VARCHAR
+);
+
+CREATE TABLE Comentario (
+    idComent INT PRIMARY KEY,
+    idUsuarioComent INT,
+    idHistoriaComent INT,
+    dscCorpoComent VARCHAR,
+    idRespComent INT
+);
+
+CREATE TABLE Genero (
+    idGenero INT PRIMARY KEY,
+    dscGenero VARCHAR
+);
+
+CREATE TABLE Possui (
+    fk_Historia_idHist INT,
+    fk_Genero_idGenero INT,
+    idGeneroHist VARCHAR PRIMARY KEY
+);
+
+ALTER TABLE Historia ADD CONSTRAINT FK_Historia_2
+    FOREIGN KEY (idUsuario)
+    REFERENCES Usuario (idUsuario);
+
+ALTER TABLE Historia ADD CONSTRAINT FK_Historia_3
+    FOREIGN KEY (idGenero)
+    REFERENCES Possui (idGeneroHist);
+
+ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_2
+    FOREIGN KEY (idUsuarioComent)
+    REFERENCES Usuario (idUsuario);
+
+ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_3
+    FOREIGN KEY (idRespComent)
+    REFERENCES Comentario (idComent);
+
+ALTER TABLE Possui ADD CONSTRAINT FK_Possui_3
+    FOREIGN KEY (fk_Genero_idGenero)
+    REFERENCES Genero (idGenero)
+    ON DELETE SET NULL;
+```
         
        
 ### 9	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
