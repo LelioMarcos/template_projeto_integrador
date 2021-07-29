@@ -19,7 +19,7 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
 
 ### 3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
-![Arquivo PDF do Protótipo Balsamiq](arquivos/Prototipo_Navegacao.pdf "Empresa Devcom")
+![Arquivo PDF do Protótipo Balsamiq](arquivos/Prototipo_Navegacao.pdf?raw=true)
 
 
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
@@ -35,10 +35,10 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
 
 ### 4 TABELA DE DADOS DO SISTEMA:
-![Exemplo de Tabela de dados da Empresa Devcom](arquivos/Tabela_BD.xlsx "Tabela - Estórias sem H")
+![Tabela de Dados](arquivos/Tabela_BD.xlsx?raw=true)
 
  ### 5.PMC<br>
- ![Exemplo de Tabela de dados da Empresa Devcom](arquivos/PMC.png "PMC")<br>
+ ![PMC](arquivos/PMC.png "PMC")<br>
  
  
  ### 6.MODELO CONCEITUAL<br>       
