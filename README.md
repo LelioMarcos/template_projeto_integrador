@@ -10,11 +10,6 @@ Carlos Eungênio Venturin Goldner carloseugventurin@gmail.com<br>
 Rodolfo Müller do Amaral  email_terceiro_componente@dominio.com<br>
 
 ### 2.MINIMUNDO<br>
-Descrever o mini-mundo! (Não deve ser maior do que 30 linhas, se necessário resumir para justar)
-Entrevista com o usuário e identificação dos requisitos.(quando for o caso de sistemas com cliente real)
-Descrição textual das regras de negócio definidas como um subconjunto do mundo real cujos elementos são propriedades que desejamos incluir, processar, armazenar, gerenciar, atualizar, e que descrevem a proposta/solução a ser desenvolvida.
-<br>
-
 > O sistema proposto conterá as informações aqui detalhadas. Das Histórias serão armazenados o número, nome, sinopse, link de capa, nota e corpo. Dos Usuários serão armazenados o número, nome, email, senha, "bio" e link da foto. Cada Usuario pode ter várias histórias mas uma história pode ser escrita por apenas um usuário. Vale ressaltar que os usuários não são obrigados a escrever histórias. Dos Comentários são armazenados número, número da história, corpo do comentário e a identificação de resposta. Um usuário pode fazer vários comentários mas cada comentário pertence somente a um usuário. Não é obrigatório que o comentário seja uma resposta e os usuários podem não comentar. Gêneros possuem número e nome. "Possui" tem identificação relacionando gênero e história. Cada Gênero pode possuir várias histórias e cada história pode ter vários gêneros. Os gêneros não precisam ter histórias.
  
 
@@ -23,15 +18,12 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 
 
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
-    a) O sistema proposto poderá fornecer quais tipos de relatórios e informaçes? 
-    b) Crie uma lista com os 5 principais relatórios que poderão ser obtidos por meio do sistema proposto!
-    
-> A Empresa DevCom precisa inicialmente dos seguintes relatórios:
-* Relatório que informe quais são os gerentes de cada departamento incluindo as seguintes informações: número do departamento,  nome do departamento, e nome do gerente.
-* Relatório de empregados por projeto incluindo as seguintes informações: número do projeto, nome do projeto, rg do empregado, nome do empregado e quantidade de horas de trabalho do empregado alocadas ao projeto.
-* Relatório de empregados com dependentes incluindo as seguintes informações: rg do empregado, nome do empregado, nome do dependente, tipo de relação, data de nascimento do dependente e sexo do dependente.
-* Relatório com a quantidade de empregados por cada departamento incluindo as seguintes informações: nome do departamento, supervisor e quantidade de empregados alocados no departamento.
-* Relatório de supervisores e supervisionados incluindo as seguintes informações: nome do supervisor e nome do supervisionado.
+> Relatórios gerados:
+* Relatório que informe quais são as histórias criadas por cada usuário, incluindo: número da história, nome da história, número do usuário e nome do usuário.
+* Relatório que informe quais são os comentários feitos por cada usuário, incluindo: número do comentário, corpo do comentário, número da história, número do usuário e nome do usuário.
+* Relatório que informe quais são os gêneros de cada história, incluindo: número da história, nome da história, número do gênero e nome do gênero.
+* Relatório que informe a quantidade de histórias por gênero, incluindo: número do gênero, nome do gênero e quantidade de histórias.
+* Relatório que informe a quantidade de histórias escritas por cada usuário, incluindo: número do usuário, nome do usuário e quantidade de histórias.
  
 
 ### 4 TABELA DE DADOS DO SISTEMA:
