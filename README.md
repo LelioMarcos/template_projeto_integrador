@@ -49,9 +49,28 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
     
 #### 6.1 Descrição dos dados 
     Historia: Tabela que armazena as informações relativas à história
+    idHist: Campo que armazena o número identificador de cada história.
+    nomHist: Campo que armazena o nome de cada história.
+    dscSinopseHist: Campo que armazena a sinopse de cada história.
+    linkCapaHist: Campo que armazena um link para a capa de cada história.
+    notaHist: Campo que armazena o número da nota para cada história.
+    dscCorpoHist: Campo que armazena o conteúdo de cada história.
     Usuario: Tabela que armazena as informações relativas ao usuário
-    Comentario: Tabela que armazena as informações relativas ao comentario feito pelo usuario em alguma história
+    idUsuario: Campo que armazena o número identificador de cada usuário.
+    nomUsuario: Campo que armazena o nome de cada usuário.
+    dscEmailUsuario: Campo que armazena o endereço de email pertencente ao usuário.
+    senhaUsuario: Campo que armazena a senha pertencente ao usuário correspondente.
+    dscBioUsuario: Campo que armazena as informações da "bio" do usuário.
+    linkFotoUsuario: Campo que armazena um link para a foto de cada usuário.
+    Comentario: Tabela que armazena as informações relativas ao comentario feito pelo usuario em alguma história.
+    idComent: Campo que armazena o número identificador de cada comentário.
+    idUsuarioComent: Campo que armazena o número identificador do usuário que fez cada comentário.
+    idHistoriaComent: Campo que armazena o número identificador da história que foi comentada.
+    dscCorpoComent: Campo que armazena o conteúdo de cada comentário.
+    idRespComent: Campo que armazena o identificador do comentário que está sendo respondido.
     Genero: Tabela que armazena as informações relativas ao gênero da história.
+    idGenero: Campo que armazena o número identificador de cada gênero.
+    dscGenero: Campo que armazena a denominação de cada gênero.
 
 
 ### 7	MODELO LÓGICO<br>
