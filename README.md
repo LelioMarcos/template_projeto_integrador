@@ -1,11 +1,11 @@
-# TRABALHO DE PI:  Histórias sem E
+# TRABALHO DE PI:  Estórias sem H
 Trabalho desenvolvido durante a disciplina de Banco de Dados do Integrado
 
 # Sumário
 
 ### 1. COMPONENTES<br>
 Integrantes do grupo<br>
-Lélio Marcos Rangel Cunha email_primeiro_componente@dominio.com<br>
+Lélio Marcos Rangel Cunha leliomrcunha@gmail.com<br>
 Carlos Eungênio Venturin Goldner carloseugventurin@gmail.com<br>
 Rodolfo Müller do Amaral  email_terceiro_componente@dominio.com<br>
 
@@ -19,7 +19,7 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
 
 ### 3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
-![Arquivo PDF do Protótipo Balsamiq](arquivos/Prototipo_Navegacao.pdf"Empresa Devcom")
+![Arquivo PDF do Protótipo Balsamiq](arquivos/Prototipo_Navegacao.pdf "Empresa Devcom")
 
 
 #### 3.1 QUAIS PERGUNTAS PODEM SER RESPONDIDAS COM O SISTEMA PROPOSTO?
@@ -39,13 +39,10 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
 
  ### 5.PMC<br>
  ![Exemplo de Tabela de dados da Empresa Devcom](arquivos/PMC.png "PMC")<br>
- a) inclusão do PMC desenvolvido pelo grupo
  
  
  ### 6.MODELO CONCEITUAL<br>       
 ![Alt text](arquivos/modConc.png "Modelo Conceitual")
-    
-      
     
 #### 6.1 Descrição dos dados 
     Historia: Tabela que armazena as informações relativas à história
