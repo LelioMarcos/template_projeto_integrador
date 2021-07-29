@@ -35,7 +35,7 @@ Descrição textual das regras de negócio definidas como um subconjunto do mund
  
 
 ### 4 TABELA DE DADOS DO SISTEMA:
-![Exemplo de Tabela de dados da Empresa Devcom](arquivos/Tabela_BD.xlsx "Tabela - Historias sem E")
+![Exemplo de Tabela de dados da Empresa Devcom](arquivos/Tabela_BD.xlsx "Tabela - Estórias sem H")
 
  ### 5.PMC<br>
  ![Exemplo de Tabela de dados da Empresa Devcom](arquivos/PMC.png "PMC")<br>
