@@ -130,16 +130,46 @@ ALTER TABLE Possui ADD CONSTRAINT FK_Possui_3
         
        
 ### 9	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-        a) inclusão das instruções de inserção dos dados nas tabelas criadas pelo script de modelo físico
-        (Drop para exclusão de tabelas + create definição de para tabelas e estruturas de dados 
- <br> + insert para dados a serem inseridos)
-        b) Criar um novo banco de dados para testar a restauracao 
-        (em caso de falha na restauração o grupo não pontuará neste quesito)
-        c) formato .SQL
+```
+INSERT INTO usuario 
+VALUES (1,'José de Alencar','josedealencar@hotmail.com', 'c7cc12f6deb215d2381bb9ac2c9c6c70', 'José Martiniano de Alencar foi um escritor e político brasileiro. É notável como escritor por ter sido o fundador do romance de temática nacional, e por ser o patrono da cadeira fundada por Machado de Assis na Academia Brasileira de Letras.','https://bit.ly/3eM4t6G'),
+(2, 'Machado de Assis', 'machadodeassis@yahoo.com', '96be35715459112775cdd0f17f03d9aa', 'Joaquim Maria Machado de Assis foi um escritor brasileiro, considerado por muitos críticos, estudiosos, escritores e leitores um dos maiores senão o maior nome da literatura do Brasil.', 'https://bit.ly/3hXmtgn'),
+(3, 'Dante Alighieri', 'dante0080@gmail.com', '956d62eb88f1fadf63d3e9613df08e69', 'Dante Alighieri foi um escritor, poeta e político florentino, nascido na atual Itália.', 'https://bit.ly/36QeYl8'),
+(4, 'Aluísio Azevedo', 'aluisioaze@gmail.com', '4e234d26e1c27a3396fcab6f0c94ae44', 'Aluísio Tancredo Gonçalves de Azevedo foi um romancista, contista, cronista, diplomata, caricaturista e jornalista brasileiro; além de desenhista e pintor.', 'https://bit.ly/3wZbk2I');
 
+INSERT INTO comentario
+VALUES (1,2,2,'Bom!',null),
+(2,2,3,'Muito Bom!',null),
+(3,1,1,'Não gostei!',null),
+(4,4,1,'Discordo...',3);
 
+INSERT INTO genero
+VALUES (1, 'Ficção'),
+(2, 'Não ficção'),
+(3,'Ficção científica'),
+(4, 'Ficção fantástica'),
+(5, 'Romance'),
+(6, 'Conto'),
+(7, 'Biografia');
+
+INSERT INTO possui
+VALUES (1, 1, 1),
+(1, 2, 2),
+(1, 3, 3),
+(1, 4,4),
+(1, 5,5),
+(1, 6,6);
+
+INSERT INTO historia
+VALUES (1, 'Cinco Minutos',1,1,'Cinco Minutos é romance de José de Alencar. Cinco Minutos, assim como “A Viuvinha“, foram escritos no início da carreira do autor. Assim como os outros romances caracterizados pelo romantismo ingênuo de Alencar, esses dois não fogem à regra, são feitos aos moldes de folhetim, curtos, quase infantis.','https://bit.ly/36QaPxA', 8, 'É uma história curiosa a que lhe vou contar, minha prima. Mas é uma história e não um romance. Há mais de dois anos, seriam seis horas da tarde, dirigi- -me ao Rocio para tomar o ônibus de Andaraí. Sabe que sou o homem menos pontual que há neste mundo; entre os meus imensos defeitos e as minhas poucas qualidades, não conto a pontualidade, essa virtude dos reis e esse mau costume dos ingleses. Entusiasta da liberdade, não posso admitir de modo algum que um homem se escravize ao seu relógio e regule as suas ações pelo movimento de uma pequena agulha de aço ou pelas oscilações de uma pêndula.'),
+(2, 'Memórias Póstumas de Brás Cubas', 2, 1, 'Memórias Póstumas de Brás Cubas retrata a escravidão, as classes sociais, o cientificismo e o positivismo da época, chegando a criar, inclusive, uma nova filosofia', 'https://bit.ly/36W0gc8', 4, 'Algum tempo hesitei se devia abrir estas memórias pelo princípio ou  pelo fim, isto é, se poria em primeiro lugar o meu nascimento ou a  minha morte. Suposto o uso vulgar seja começar pelo nascimento,  duas considerações me levaram a adotar diferente método: a  primeira é que eu não sou propriamente um autor defunto, mas um  defunto autor, para quem a campa foi outro berço; a segunda é que  o escrito ficaria assim mais galante e mais novo. Moisés, que também  contou a sua morte, não a pôs no intróito, mas no cabo: diferença  radical entre este livro e o Pentateuco.'),
+(3, 'Dom Casmurro', 2, 1, '"Dom Casmurro" conta a história de Bento Santiago (Bentinho), apelidado de Dom Casmurro por ser calado e introvertido.', 'https://bit.ly/2UvSzak', 7, 'Uma noite destas, vindo da cidade para o Engenho Novo, encontrei num trem da Central um rapaz aqui do bairro, que eu conheço de vista e de chapéu. Cumprimentou-me, sentou-se ao pé de mim, falou da lua e dos ministros, e acabou recitando-me versos. A viagem era curta, e os versos pode ser que não fossem inteiramente maus. Sucedeu, porém, que, como eu estava cansado, fechei os olhos três ou quatro vezes; tanto bastou para que ele interrompesse a leitura e metesse os versos no bolso.'),
+(4, 'A Divina Comédia', 3, 1, 'A Divina Comédia é basicamente a história da conversão de um pecador ao caminho de Deus.', 'https://bit.ly/3hYWDZo', 2, 'Dante, perdido numa selva escura, erra nela toda a noite. Saindo ao amanhecer, começa a subir por uma colina, quando lhe atravessam a passagem uma pantera, um leão e uma loba, que o repelem para a selva. Aparece-lhe então a imagem de Virgílio, que o reanima e se oferece a tirá-lo de lá, fazendo-o passar pelo Inferno e pelo Purgatório. Beatriz, depois, o guiará ao Paraíso. Dante o segue.'),
+(5, 'O Cortiço', 4, 5, 'O Cortiço denuncia a exploração e as péssimas condições de vida dos moradores das estalagens ou dos cortiços cariocas do final do século XIX.', 'https://bit.ly/3zAsWUw', 6, 'João Romão foi, dos treze aos vinte e cinco anos, empregado de um vendeiro que enriqueceu entre as quatro paredes de uma suja e obscura taverna nos refolhos do bairro do Botafogo; e tanto economizou do pouco que ganhara nessa dúzia de anos, que, ao retirar-se o patrão para a terra, lhe deixou, em pagamento de ordenados vencidos, nem só a venda com o que estava dentro, como ainda um conto e quinhentos em dinheiro.'),
+(6, 'O Alienista', 2, 6, 'Após conquistar respeito em sua carreira de médico na Europa e no Brasil, o Dr. Simão Bacamarte retorna à sua terra-natal, Itaguaí, para se dedicar ainda mais a sua profissão.', 'https://bit.ly/3rANqK0', 6, 'As crônicas da vila de Itaguaí dizem que em tempos remotos vivera ali um certo médico, o Dr. Simão Bacamarte, filho da nobreza da terra e o maior dos médicos do Brasil, de Portugal e das Espanhas.'),
+(7, 'Missa do Galo', 2, 6, '“Missa do Galo” é narrado em primeira pessoa, por Nogueira, que relembra quando era um jovem de 17 anos que tinha ido ao Rio de Janeiro para estudar e que foi hospedado na casa do escrivão Meneses (viúvo de sua prima).', 'https://bit.ly/3i6lwT3', 7, 'NUNCA PUDE entender a conversação que tive com uma senhora, há muitos anos, contava eu dezessete, ela trinta. Era noite de Natal. Havendo ajustado com um vizinho irmos à missa do galo, preferi não dormir; combinei que eu iria acordá-lo à meia-noite.');
+```
 ### 10	TABELAS E PRINCIPAIS CONSULTAS<br>
-    OBS: Incluir para cada tópico as instruções SQL + imagens (print da tela) mostrando os resultados.<br>
 #### 10.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
 #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA 
  Inserir as principais consultas (relativas aos 5 principais relatórios) definidas previamente no iten 3.1 deste template.
