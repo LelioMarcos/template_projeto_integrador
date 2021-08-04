@@ -130,7 +130,7 @@ ALTER TABLE Possui ADD CONSTRAINT FK_Possui_3
         
        
 ### 9	INSERT APLICADO NAS TABELAS DO BANCO DE DADOS<br>
-```
+```sql
 INSERT INTO usuario 
 VALUES (1,'José de Alencar','josedealencar@hotmail.com', 'c7cc12f6deb215d2381bb9ac2c9c6c70', 'José Martiniano de Alencar foi um escritor e político brasileiro. É notável como escritor por ter sido o fundador do romance de temática nacional, e por ser o patrono da cadeira fundada por Machado de Assis na Academia Brasileira de Letras.','https://bit.ly/3eM4t6G'),
 (2, 'Machado de Assis', 'machadodeassis@yahoo.com', '96be35715459112775cdd0f17f03d9aa', 'Joaquim Maria Machado de Assis foi um escritor brasileiro, considerado por muitos críticos, estudiosos, escritores e leitores um dos maiores senão o maior nome da literatura do Brasil.', 'https://bit.ly/3hXmtgn'),
