@@ -196,22 +196,23 @@ SELECT * FROM usuario;
 ```sql
 SELECT h.idhist, h.nomhist, h.idusuario, u.nomusuario FROM historia h JOIN usuario u ON (h.idusuario = u.idusuario);
 ```
-
+![Alt text](arquivos/relatorios/primeira.png "Primeira Consulta")
 ```sql
 SELECT c.idcoment, c.dsccorpocoment, c.idhistoriacoment, u.idusuario, u.nomusuario FROM comentario c JOIN usuario u ON (c.idusuariocoment = u.idusuario);
 ```
-
+![Alt text](arquivos/relatorios/segunda.png "Segunda Consulta")
 ```sql
 SELECT h.idhist, h.nomhist, g.idgenero, g.dscgenero FROM historia h JOIN possui p ON (h.idhist = p.fk_historia_idhist) JOIN genero g ON (p.fk_genero_idgenero = g.idgenero);
 ```
-
+![Alt text](arquivos/relatorios/terceira.png "Terceira Consulta")
 ```sql
 SELECT g.*, COUNT(*) AS "Histórias" FROM genero g JOIN possui p ON (g.idgenero = p.fk_genero_idgenero) JOIN historia h ON (p.fk_historia_idhist = h.idhist) GROUP BY g.idgenero ORDER BY g.idgenero;
 ```
-
+![Alt text](arquivos/relatorios/quarta.png "Quarta Consulta")
 ```sql
 SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.idusuario = h.idusuario) GROUP BY u.idusuario ORDER BY u.idusuario;
 ```
+![Alt text](arquivos/relatorios/quinta.png "Quinta Consulta")
  <br>
  <br>
  
