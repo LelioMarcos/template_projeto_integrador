@@ -171,6 +171,22 @@ VALUES (1, 'Cinco Minutos',1,1,'Cinco Minutos é romance de José de Alencar. Ci
 ```
 ### 10	TABELAS E PRINCIPAIS CONSULTAS<br>
 #### 10.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
+```sql
+SELECT * FROM comentario;
+```
+```sql
+SELECT * FROM genero;
+```
+```sql
+SELECT * FROM historia;
+```
+```sql
+SELECT * FROM possui;
+```
+```sql
+SELECT * FROM usuario;
+```
+
 #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA 
  Inserir as principais consultas (relativas aos 5 principais relatórios) definidas previamente no iten 3.1 deste template.
  <br>
