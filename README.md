@@ -193,11 +193,25 @@ SELECT * FROM usuario;
 ![Alt text](arquivos/tabelas/usuario.png "Tabela de Usuários")
 
 #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA 
- Inserir as principais consultas (relativas aos 5 principais relatórios) definidas previamente no iten 3.1 deste template.
- <br>
-  a) Você deve apresentar as consultas em formato SQL para cad um dos relatórios.
- <br>
-  b) Além da consulta deve ser apresentada uma imagem com o resultado obtido para cada consulta.
+```sql
+SELECT h.idhist, h.nomhist, h.idusuario, u.nomusuario FROM historia h JOIN usuario u ON (h.idusuario = u.idusuario);
+```
+
+```sql
+SELECT c.idcoment, c.dsccorpocoment, c.idhistoriacoment, u.idusuario, u.nomusuario FROM comentario c JOIN usuario u ON (c.idusuariocoment = u.idusuario);
+```
+
+```sql
+SELECT h.idhist, h.nomhist, g.idgenero, g.dscgenero FROM historia h JOIN possui p ON (h.idhist = p.fk_historia_idhist) JOIN genero g ON (p.fk_genero_idgenero = g.idgenero);
+```
+
+```sql
+SELECT g.*, COUNT(*) AS "Histórias" FROM genero g JOIN possui p ON (g.idgenero = p.fk_genero_idgenero) JOIN historia h ON (p.fk_historia_idhist = h.idhist) GROUP BY g.idgenero ORDER BY g.idgenero;
+```
+
+```sql
+SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.idusuario = h.idusuario) GROUP BY u.idusuario ORDER BY u.idusuario;
+```
  <br>
  <br>
  
