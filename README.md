@@ -71,7 +71,7 @@ CREATE TABLE Historia (
     idHist INT PRIMARY KEY,
     nomHist VARCHAR,
     idUsuario INT,
-    idGenero VARCHAR,
+    idGenero INT,
     dscSinopseHist VARCHAR,
     linkCapaHist VARCHAR,
     notaHist DECIMAL(10,2),
@@ -103,7 +103,7 @@ CREATE TABLE Genero (
 CREATE TABLE Possui (
     fk_Historia_idHist INT,
     fk_Genero_idGenero INT,
-    idGeneroHist VARCHAR PRIMARY KEY
+    idGeneroHist INT PRIMARY KEY
 );
 
 ALTER TABLE Historia ADD CONSTRAINT FK_Historia_2
@@ -154,11 +154,11 @@ VALUES (1, 'Ficção'),
 
 INSERT INTO possui
 VALUES (1, 1, 1),
-(1, 2, 2),
-(1, 3, 3),
-(1, 4,4),
-(1, 5,5),
-(1, 6,6);
+(2, 2, 2),
+(2, 3, 3),
+(3, 4,4),
+(4, 5,5),
+(5, 6,6);
 
 INSERT INTO historia
 VALUES (1, 'Cinco Minutos',1,1,'Cinco Minutos é romance de José de Alencar. Cinco Minutos, assim como “A Viuvinha“, foram escritos no início da carreira do autor. Assim como os outros romances caracterizados pelo romantismo ingênuo de Alencar, esses dois não fogem à regra, são feitos aos moldes de folhetim, curtos, quase infantis.','https://bit.ly/36QaPxA', 8, 'É uma história curiosa a que lhe vou contar, minha prima. Mas é uma história e não um romance. Há mais de dois anos, seriam seis horas da tarde, dirigi- -me ao Rocio para tomar o ônibus de Andaraí. Sabe que sou o homem menos pontual que há neste mundo; entre os meus imensos defeitos e as minhas poucas qualidades, não conto a pontualidade, essa virtude dos reis e esse mau costume dos ingleses. Entusiasta da liberdade, não posso admitir de modo algum que um homem se escravize ao seu relógio e regule as suas ações pelo movimento de uma pequena agulha de aço ou pelas oscilações de uma pêndula.'),
