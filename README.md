@@ -174,18 +174,23 @@ VALUES (1, 'Cinco Minutos',1,1,'Cinco Minutos é romance de José de Alencar. Ci
 ```sql
 SELECT * FROM comentario;
 ```
+![Alt text](arquivos/tabelas/comentario.png "Tabela de Comentários")
 ```sql
 SELECT * FROM genero;
 ```
+![Alt text](arquivos/tabelas/genero.png "Tabela de Gêneros")
 ```sql
 SELECT * FROM historia;
 ```
+![Alt text](arquivos/tabelas/historia.png "Tabela de Histórias")
 ```sql
 SELECT * FROM possui;
 ```
+![Alt text](arquivos/tabelas/possui.png "Tabela Possui")
 ```sql
 SELECT * FROM usuario;
 ```
+![Alt text](arquivos/tabelas/usuario.png "Tabela de Usuários")
 
 #### 10.2 PRINCIPAIS CONSULTAS DO SISTEMA 
  Inserir as principais consultas (relativas aos 5 principais relatórios) definidas previamente no iten 3.1 deste template.
