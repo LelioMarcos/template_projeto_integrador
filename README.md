@@ -217,7 +217,6 @@ SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.
  <br>
  
  ### 11 Gráficos, relatórios, integração com Linguagem de programação e outras solicitações.<br>
-     https://colab.research.google.com/drive/1TrggFfqk4qOLp05pcekVoziKeHr4kmHN?usp=sharing
      OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
  #### 11.1	Integração com Linguagem de programação; <br>
  #### 11.2	Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais <br>
