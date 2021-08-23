@@ -10,7 +10,7 @@ Carlos Eungênio Venturin Goldner carloseugventurin@gmail.com<br>
 Rodolfo Müller do Amaral  email_terceiro_componente@dominio.com<br>
 
 ### 2.MINIMUNDO<br>
-> O sistema proposto conterá as informações aqui detalhadas. Das Histórias serão armazenados o número, nome, sinopse, link de capa, nota e corpo. Dos Usuários serão armazenados o número, nome, email, senha, "bio" e link da foto. Cada Usuario pode ter várias histórias mas uma história pode ser escrita por apenas um usuário. Vale ressaltar que os usuários não são obrigados a escrever histórias. Dos Comentários são armazenados número, número da história, corpo do comentário e a identificação de resposta. Um usuário pode fazer vários comentários mas cada comentário pertence somente a um usuário. Não é obrigatório que o comentário seja uma resposta e os usuários podem não comentar. Gêneros possuem número e nome. "Possui" tem identificação relacionando gênero e história. Cada Gênero pode possuir várias histórias e cada história pode ter vários gêneros. Os gêneros não precisam ter histórias.
+> O sistema proposto conterá as informações aqui detalhadas. Das Histórias serão armazenados o número, nome, sinopse, link de capa, nota e corpo. Dos Usuários serão armazenados o número, nome, email, senha, "bio" e link da foto. Cada Usuario pode ter várias histórias mas uma história pode ser escrita por apenas um usuário. Vale ressaltar que os usuários não são obrigados a escrever histórias. Dos Comentários são armazenados número, número da história, corpo do comentário e a identificação de resposta. Um usuário pode fazer vários comentários mas cada comentário pertence somente a um usuário. Não é obrigatório que o comentário seja uma resposta e os usuários podem não comentar. Gêneros possuem número e nome. GeneroHist tem identificação relacionando gênero e história. Cada Gênero pode possuir várias histórias e cada história pode ter vários gêneros. Os gêneros não precisam ter histórias.
  
 
 ### 3.RASCUNHOS BÁSICOS DA INTERFACE (MOCKUPS)<br>
@@ -184,9 +184,9 @@ SELECT * FROM historia;
 ```
 ![Alt text](arquivos/tabelas/historia.png "Tabela de Histórias")
 ```sql
-SELECT * FROM possui;
+SELECT * FROM GeneroHist;
 ```
-![Alt text](arquivos/tabelas/possui.png "Tabela Possui")
+![Alt text](arquivos/tabelas/possui.png "Tabela GeneroHist")
 ```sql
 SELECT * FROM usuario;
 ```
@@ -202,11 +202,11 @@ SELECT c.idcoment, c.dsccorpocoment, c.idhistoriacoment, u.idusuario, u.nomusuar
 ```
 ![Alt text](arquivos/relatorios/segunda.png "Segunda Consulta")
 ```sql
-SELECT h.idhist, h.nomhist, g.idgenero, g.dscgenero FROM historia h JOIN possui p ON (h.idhist = p.fk_historia_idhist) JOIN genero g ON (p.fk_genero_idgenero = g.idgenero);
+SELECT h.idhist, h.nomhist, g.idgenero, g.dscgenero FROM historia h JOIN GeneroHist p ON (h.idhist = p.fk_historia_idhist) JOIN genero g ON (p.fk_genero_idgenero = g.idgenero);
 ```
 ![Alt text](arquivos/relatorios/terceira.png "Terceira Consulta")
 ```sql
-SELECT g.*, COUNT(*) AS "Histórias" FROM genero g JOIN possui p ON (g.idgenero = p.fk_genero_idgenero) JOIN historia h ON (p.fk_historia_idhist = h.idhist) GROUP BY g.idgenero ORDER BY g.idgenero;
+SELECT g.*, COUNT(*) AS "Histórias" FROM genero g JOIN GeneroHist p ON (g.idgenero = p.fk_genero_idgenero) JOIN historia h ON (p.fk_historia_idhist = h.idhist) GROUP BY g.idgenero ORDER BY g.idgenero;
 ```
 ![Alt text](arquivos/relatorios/quarta.png "Quarta Consulta")
 ```sql
