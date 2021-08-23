@@ -152,7 +152,7 @@ VALUES (1, 'Ficção'),
 (6, 'Conto'),
 (7, 'Biografia');
 
-INSERT INTO possui
+INSERT INTO generohist
 VALUES (1, 1, 1),
 (2, 2, 2),
 (2, 3, 3),
