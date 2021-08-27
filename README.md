@@ -231,11 +231,11 @@ SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.
  #### solicitações feitas pelo professor. <br>
  <br>
  <br>
- ![Alt text](arquivos/relatorios/item11/rel1.png "Relatório 1") <br>
- ![Alt text](arquivos/relatorios/item11/rel2.png "Relatório 2") <br>
- ![Alt text](arquivos/relatorios/item11/rel3.png "Relatório 3") <br>
- ![Alt text](arquivos/relatorios/item11/rel4.png "Relatório 4") <br>
- ![Alt text](arquivos/relatorios/item11/rel5.png "Relatório 5") <br>
+ ![Alt text](arquivos/relatorios/item11/rel1.png "Relatório 1") 
+ ![Alt text](arquivos/relatorios/item11/rel2.png "Relatório 2") 
+ ![Alt text](arquivos/relatorios/item11/rel3.png "Relatório 3") 
+ ![Alt text](arquivos/relatorios/item11/rel4.png "Relatório 4") 
+ ![Alt text](arquivos/relatorios/item11/rel5.png "Relatório 5") 
  
  ### 12 Slides e Apresentação em vídeo. <br>
      OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
