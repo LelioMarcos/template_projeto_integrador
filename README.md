@@ -231,12 +231,18 @@ SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.
  #### solicitações feitas pelo professor. <br>
  <br>
  <br>
- ![Alt text](arquivos/relatorios/item11/rel1.png "Relatório 1")
+![Alt text](arquivos/relatorios/item11/rel1.png "Primeiro Relatório")
+![Alt text](arquivos/relatorios/item11/rel2.png "Segundo Relatório")
+![Alt text](arquivos/relatorios/item11/rel3.png "Terceiro Relatório")
+![Alt text](arquivos/relatorios/item11/rel4.png "Quarto Relatório")
+![Alt text](arquivos/relatorios/item11/rel5.png "Quinto Relatório")
  
  ### 12 Slides e Apresentação em vídeo. <br>
-     OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
+    
  #### 12.1 Slides; <br>
+ ![Arquivo PDF dos Slides](arquivos/slides.pdf?raw=true)
  #### 12.2 Apresentação em vídeo <br>
+ [Vídeo Pecha Kucha](https://youtu.be/OwmfmOc2FDI)
  <br>
  <br>   
 
