@@ -224,12 +224,18 @@ SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.
  <br>
  
  ### 11 Gráficos, relatórios, integração com Linguagem de programação e outras solicitações.<br>
-     OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
+     
  #### 11.1	Integração com Linguagem de programação; <br>
+ ![Alt text](arquivos/relatorios/item11/integ.png "Integração")
  #### 11.2	Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais <br>
  #### solicitações feitas pelo professor. <br>
  <br>
  <br>
+ ![Alt text](arquivos/relatorios/item11/rel1.png "Relatório 1") <br>
+ ![Alt text](arquivos/relatorios/item11/rel2.png "Relatório 2") <br>
+ ![Alt text](arquivos/relatorios/item11/rel3.png "Relatório 3") <br>
+ ![Alt text](arquivos/relatorios/item11/rel4.png "Relatório 4") <br>
+ ![Alt text](arquivos/relatorios/item11/rel5.png "Relatório 5") <br>
  
  ### 12 Slides e Apresentação em vídeo. <br>
      OBS: Observe as instruções relacionadas a cada uma das atividades abaixo.<br>
