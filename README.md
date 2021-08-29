@@ -229,7 +229,7 @@ SELECT u.idusuario, u.nomusuario, COUNT(*) FROM usuario u JOIN historia h ON (u.
  ![Alt text](arquivos/relatorios/item11/integ.png "Integração")
  #### 11.2	Desenvolvimento de gráficos/relatórios pertinentes, juntamente com demais <br>
  #### solicitações feitas pelo professor. <br>
-![Alt text](arquivos/relatorios/quarta.png "Quarta Consulta")
+![Alt text](arquivos/relatorios/item11/rel.png "Primeiro Relatório")
 ![Alt text](arquivos/relatorios/item11/rel2.png "Segundo Relatório")
 ![Alt text](arquivos/relatorios/item11/rel3.png "Terceiro Relatório")
 ![Alt text](arquivos/relatorios/item11/rel4.png "Quarto Relatório")
