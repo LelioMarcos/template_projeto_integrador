@@ -67,93 +67,69 @@ Rodolfo Müller do Amaral  email_terceiro_componente@dominio.com<br>
 
 ### 8	MODELO FÍSICO<br>
 ```sql
-CREATE TABLE Historia (
-    idHist INT PRIMARY KEY,
-    nomHist VARCHAR,
-    dscSinopseHist VARCHAR,
-    notaHist DECIMAL(10,2),
-    dscCorpoHist VARCHAR,
-    idUsuario INT,
-    idCapa INT
+CREATE TABLE hsemh.classificacao (
+	idclassificacao int4 NOT NULL DEFAULT nextval('hsemh.table_name_id_seq'::regclass),
+	dscclassificacao varchar NULL,
+	CONSTRAINT classificacao_pkey PRIMARY KEY (idclassificacao)
 );
 
-CREATE TABLE Usuario (
-    idUsuario INT PRIMARY KEY,
-    nomUsuario VARCHAR,
-    dscEmailUsuario VARCHAR,
-    senhaUsuario VARCHAR,
-    dscBioUsuario VARCHAR,
-    linkFotoUsuario VARCHAR
+CREATE TABLE hsemh.comentario (
+	idcoment int4 NOT NULL DEFAULT nextval('hsemh.tablename1_columnname_seq'::regclass),
+	dsccorpocoment varchar NULL,
+	idusuario int4 NULL,
+	idhist int4 NULL,
+	CONSTRAINT comentario_pkey PRIMARY KEY (idcoment)
 );
 
-CREATE TABLE Comentario (
-    idComent INT PRIMARY KEY,
-    dscCorpoComent VARCHAR,
-    idUsuario INT,
-    idHist INT
+CREATE TABLE hsemh.genero (
+	idgenero int4 NOT NULL DEFAULT nextval('hsemh.tablename_columnname_seq'::regclass),
+	dscgenero varchar NULL,
+	CONSTRAINT genero_pkey PRIMARY KEY (idgenero)
 );
 
-CREATE TABLE Genero (
-    idGenero INT PRIMARY KEY,
-    dscGenero VARCHAR
+CREATE TABLE hsemh.generohist (
+	fk_genero_idgenero int4 NULL,
+	fk_historia_idhist int4 NULL,
+	idgenerohist int4 NOT NULL DEFAULT nextval('hsemh.tablename34_columnname_seq'::regclass),
+	CONSTRAINT generohist_pkey PRIMARY KEY (idgenerohist)
 );
 
-CREATE TABLE Capa (
-    idCapa INT PRIMARY KEY,
-    linkCapa VARCHAR
+CREATE TABLE hsemh.historia (
+	idhist int4 NOT NULL DEFAULT nextval('hsemh.tablename233_columnname_seq'::regclass),
+	nomhist varchar NULL,
+	dscsinopsehist varchar NULL,
+	notahist numeric(10, 2) NULL,
+	dsccorpohist varchar NULL,
+	idusuario int4 NULL,
+	idcapa int4 NULL,
+	idclassificacao int4 NULL,
+	CONSTRAINT historia_pkey PRIMARY KEY (idhist)
 );
 
-CREATE TABLE Responde (
-    idComent INT,
-    idComentResp INT,
-    idResposta INT PRIMARY KEY
+CREATE TABLE hsemh.usuario (
+	idusuario int4 NOT NULL DEFAULT nextval('hsemh.usu'::regclass),
+	nomusuario varchar NULL,
+	dscemailusuario varchar NULL,
+	senhausuario varchar NULL,
+	dscbiousuario varchar NULL,
+	linkfotousuario text NULL,
+	CONSTRAINT usuario_dscemailusuario_key UNIQUE (dscemailusuario),
+	CONSTRAINT usuario_pkey PRIMARY KEY (idusuario)
 );
 
-CREATE TABLE GeneroHist (
-    fk_Genero_idGenero INT,
-    fk_Historia_idHist INT,
-    idGeneroHist INT PRIMARY KEY
+CREATE TABLE hsemh.capa (
+	idcapa int4 NOT NULL DEFAULT nextval('hsemh.tablename4_columnname_seq'::regclass),
+	linkcapa varchar NULL,
+	CONSTRAINT capa_pkey PRIMARY KEY (idcapa)
 );
- 
-ALTER TABLE Historia ADD CONSTRAINT FK_Historia_2
-    FOREIGN KEY (idUsuario)
-    REFERENCES Usuario (idUsuario)
-    ON DELETE CASCADE;
- 
-ALTER TABLE Historia ADD CONSTRAINT FK_Historia_3
-    FOREIGN KEY (idCapa)
-    REFERENCES Capa (idCapa)
-    ON DELETE SET NULL;
- 
-ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_2
-    FOREIGN KEY (idUsuario)
-    REFERENCES Usuario (idUsuario)
-    ON DELETE CASCADE;
- 
-ALTER TABLE Comentario ADD CONSTRAINT FK_Comentario_3
-    FOREIGN KEY (idHist)
-    REFERENCES Historia (idHist)
-    ON DELETE CASCADE;
- 
-ALTER TABLE Responde ADD CONSTRAINT FK_Responde_2
-    FOREIGN KEY (idComent)
-    REFERENCES Comentario (idComent)
-    ON DELETE CASCADE;
- 
-ALTER TABLE Responde ADD CONSTRAINT FK_Responde_3
-    FOREIGN KEY (idComentResp)
-    REFERENCES Comentario (idComent)
-    ON DELETE CASCADE;
- 
-ALTER TABLE GeneroHist ADD CONSTRAINT FK_GeneroHist_2
-    FOREIGN KEY (fk_Genero_idGenero)
-    REFERENCES Genero (idGenero)
-    ON DELETE RESTRICT;
- 
-ALTER TABLE GeneroHist ADD CONSTRAINT FK_GeneroHist_3
-    FOREIGN KEY (fk_Historia_idHist)
-    REFERENCES Historia (idHist)
-    ON DELETE SET NULL;
+
+ALTER TABLE hsemh.comentario ADD CONSTRAINT fk_comentario_2 FOREIGN KEY (idusuario) REFERENCES hsemh.usuario(idusuario) ON DELETE CASCADE;
+ALTER TABLE hsemh.comentario ADD CONSTRAINT fk_comentario_3 FOREIGN KEY (idhist) REFERENCES hsemh.historia(idhist) ON DELETE CASCADE;
+ALTER TABLE hsemh.generohist ADD CONSTRAINT fk_generohist_2 FOREIGN KEY (fk_genero_idgenero) REFERENCES hsemh.genero(idgenero) ON DELETE CASCADE;
+ALTER TABLE hsemh.generohist ADD CONSTRAINT fk_generohist_3 FOREIGN KEY (fk_historia_idhist) REFERENCES hsemh.historia(idhist) ON DELETE CASCADE;
+ALTER TABLE hsemh.historia ADD CONSTRAINT fk_historia_2 FOREIGN KEY (idusuario) REFERENCES hsemh.usuario(idusuario) ON DELETE CASCADE;
+ALTER TABLE hsemh.historia ADD CONSTRAINT fk_historia_3 FOREIGN KEY (idcapa) REFERENCES hsemh.capa(idcapa) ON DELETE SET NULL;
+ALTER TABLE hsemh.historia ADD CONSTRAINT fk_historia_4 FOREIGN KEY (idclassificacao) REFERENCES hsemh.classificacao(idclassificacao) ON DELETE CASCADE;
 ```
         
        
@@ -166,46 +142,52 @@ values (1, 'https://bit.ly/3hXmtgn'),
 
 
 INSERT INTO usuario 
-VALUES (1,'José de Alencar','josedealencar@hotmail.com', 'c7cc12f6deb215d2381bb9ac2c9c6c70', 'José Martiniano de Alencar foi um escritor e político brasileiro. É notável como escritor por ter sido o fundador do romance de temática nacional, e por ser o patrono da cadeira fundada por Machado de Assis na Academia Brasileira de Letras.','https://bit.ly/3eM4t6G'),
-(2, 'Machado de Assis', 'machadodeassis@yahoo.com', '96be35715459112775cdd0f17f03d9aa', 'Joaquim Maria Machado de Assis foi um escritor brasileiro, considerado por muitos críticos, estudiosos, escritores e leitores um dos maiores senão o maior nome da literatura do Brasil.', 'https://bit.ly/3hXmtgn'),
-(3, 'Dante Alighieri', 'dante0080@gmail.com', '956d62eb88f1fadf63d3e9613df08e69', 'Dante Alighieri foi um escritor, poeta e político florentino, nascido na atual Itália.', 'https://bit.ly/36QeYl8'),
-(4, 'Aluísio Azevedo', 'aluisioaze@gmail.com', '4e234d26e1c27a3396fcab6f0c94ae44', 'Aluísio Tancredo Gonçalves de Azevedo foi um romancista, contista, cronista, diplomata, caricaturista e jornalista brasileiro; além de desenhista e pintor.', 'https://bit.ly/3wZbk2I');
+VALUES ('José de Alencar','josedealencar@hotmail.com', 'c7cc12f6deb215d2381bb9ac2c9c6c70', 'José Martiniano de Alencar foi um escritor e político brasileiro. É notável como escritor por ter sido o fundador do romance de temática nacional, e por ser o patrono da cadeira fundada por Machado de Assis na Academia Brasileira de Letras.','data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAH5AZADASIAAhEB'),
+('Machado de Assis', 'machadodeassis@yahoo.com', '96be35715459112775cdd0f17f03d9aa', 'Joaquim Maria Machado de Assis foi um escritor brasileiro, considerado por muitos críticos, estudiosos, escritores e leitores um dos maiores senão o maior nome da literatura do Brasil.', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAH5AZADASIAAhEB'),
+('Dante Alighieri', 'dante0080@gmail.com', '956d62eb88f1fadf63d3e9613df08e69', 'Dante Alighieri foi um escritor, poeta e político florentino, nascido na atual Itália.', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAH5AZADASIAAhEB'),
+('Aluísio Azevedo', 'aluisioaze@gmail.com', '4e234d26e1c27a3396fcab6f0c94ae44', 'Aluísio Tancredo Gonçalves de Azevedo foi um romancista, contista, cronista, diplomata, caricaturista e jornalista brasileiro; além de desenhista e pintor.', 'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMDAsKCwsNDhIQDQ4RDgsLEBYQERMUFRUVDA8XGBYUGBIUFRT/2wBDAQMEBAUEBQkFBQkUDQsNFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBT/wAARCAH5AZADASIAAhEB');
 
 
 INSERT INTO historia
-VALUES (1, 'Cinco Minutos','Cinco Minutos é romance de José de Alencar. Cinco Minutos, assim como “A Viuvinha“, foram escritos no início da carreira do autor. Assim como os outros romances caracterizados pelo romantismo ingênuo de Alencar, esses dois não fogem à regra, são feitos aos moldes de folhetim, curtos, quase infantis.', 8, 'É uma história curiosa a que lhe vou contar, minha prima. Mas é uma história e não um romance. Há mais de dois anos, seriam seis horas da tarde, dirigi- -me ao Rocio para tomar o ônibus de Andaraí. Sabe que sou o homem menos pontual que há neste mundo; entre os meus imensos defeitos e as minhas poucas qualidades, não conto a pontualidade, essa virtude dos reis e esse mau costume dos ingleses. Entusiasta da liberdade, não posso admitir de modo algum que um homem se escravize ao seu relógio e regule as suas ações pelo movimento de uma pequena agulha de aço ou pelas oscilações de uma pêndula.', 1, 1),
-(2, 'Memórias Póstumas de Brás Cubas', 'Memórias Póstumas de Brás Cubas retrata a escravidão, as classes sociais, o cientificismo e o positivismo da época, chegando a criar, inclusive, uma nova filosofia', 4, 'Algum tempo hesitei se devia abrir estas memórias pelo princípio ou  pelo fim, isto é, se poria em primeiro lugar o meu nascimento ou a  minha morte. Suposto o uso vulgar seja começar pelo nascimento,  duas considerações me levaram a adotar diferente método: a  primeira é que eu não sou propriamente um autor defunto, mas um  defunto autor, para quem a campa foi outro berço; a segunda é que  o escrito ficaria assim mais galante e mais novo. Moisés, que também  contou a sua morte, não a pôs no intróito, mas no cabo: diferença  radical entre este livro e o Pentateuco.', 2, 1),
-(3, 'Dom Casmurro', '"Dom Casmurro" conta a história de Bento Santiago (Bentinho), apelidado de Dom Casmurro por ser calado e introvertido.', 7, 'Uma noite destas, vindo da cidade para o Engenho Novo, encontrei num trem da Central um rapaz aqui do bairro, que eu conheço de vista e de chapéu. Cumprimentou-me, sentou-se ao pé de mim, falou da lua e dos ministros, e acabou recitando-me versos. A viagem era curta, e os versos pode ser que não fossem inteiramente maus. Sucedeu, porém, que, como eu estava cansado, fechei os olhos três ou quatro vezes; tanto bastou para que ele interrompesse a leitura e metesse os versos no bolso.', 2, 2),
-(4, 'A Divina Comédia', 'A Divina Comédia é basicamente a história da conversão de um pecador ao caminho de Deus.', 2, 'Dante, perdido numa selva escura, erra nela toda a noite. Saindo ao amanhecer, começa a subir por uma colina, quando lhe atravessam a passagem uma pantera, um leão e uma loba, que o repelem para a selva. Aparece-lhe então a imagem de Virgílio, que o reanima e se oferece a tirá-lo de lá, fazendo-o passar pelo Inferno e pelo Purgatório. Beatriz, depois, o guiará ao Paraíso. Dante o segue.', 3, 3),
-(5, 'O Cortiço', 'O Cortiço denuncia a exploração e as péssimas condições de vida dos moradores das estalagens ou dos cortiços cariocas do final do século XIX.', 6, 'João Romão foi, dos treze aos vinte e cinco anos, empregado de um vendeiro que enriqueceu entre as quatro paredes de uma suja e obscura taverna nos refolhos do bairro do Botafogo; e tanto economizou do pouco que ganhara nessa dúzia de anos, que, ao retirar-se o patrão para a terra, lhe deixou, em pagamento de ordenados vencidos, nem só a venda com o que estava dentro, como ainda um conto e quinhentos em dinheiro.', 4, 3),
-(6, 'O Alienista', 'Após conquistar respeito em sua carreira de médico na Europa e no Brasil, o Dr. Simão Bacamarte retorna à sua terra-natal, Itaguaí, para se dedicar ainda mais a sua profissão.', 6, 'As crônicas da vila de Itaguaí dizem que em tempos remotos vivera ali um certo médico, o Dr. Simão Bacamarte, filho da nobreza da terra e o maior dos médicos do Brasil, de Portugal e das Espanhas.', 2, 2),
-(7, 'Missa do Galo', '“Missa do Galo” é narrado em primeira pessoa, por Nogueira, que relembra quando era um jovem de 17 anos que tinha ido ao Rio de Janeiro para estudar e que foi hospedado na casa do escrivão Meneses (viúvo de sua prima).', 7, 'NUNCA PUDE entender a conversação que tive com uma senhora, há muitos anos, contava eu dezessete, ela trinta. Era noite de Natal. Havendo ajustado com um vizinho irmos à missa do galo, preferi não dormir; combinei que eu iria acordá-lo à meia-noite.', 2, 1);
+VALUES ('Cinco Minutos','Cinco Minutos é romance de José de Alencar. Cinco Minutos, assim como “A Viuvinha“, foram escritos no início da carreira do autor. Assim como os outros romances caracterizados pelo romantismo ingênuo de Alencar, esses dois não fogem à regra, são feitos aos moldes de folhetim, curtos, quase infantis.', 8, 'É uma história curiosa a que lhe vou contar, minha prima. Mas é uma história e não um romance. Há mais de dois anos, seriam seis horas da tarde, dirigi- -me ao Rocio para tomar o ônibus de Andaraí. Sabe que sou o homem menos pontual que há neste mundo; entre os meus imensos defeitos e as minhas poucas qualidades, não conto a pontualidade, essa virtude dos reis e esse mau costume dos ingleses. Entusiasta da liberdade, não posso admitir de modo algum que um homem se escravize ao seu relógio e regule as suas ações pelo movimento de uma pequena agulha de aço ou pelas oscilações de uma pêndula.', 1, 1),
+('Memórias Póstumas de Brás Cubas', 'Memórias Póstumas de Brás Cubas retrata a escravidão, as classes sociais, o cientificismo e o positivismo da época, chegando a criar, inclusive, uma nova filosofia', 4, 'Algum tempo hesitei se devia abrir estas memórias pelo princípio ou  pelo fim, isto é, se poria em primeiro lugar o meu nascimento ou a  minha morte. Suposto o uso vulgar seja começar pelo nascimento,  duas considerações me levaram a adotar diferente método: a  primeira é que eu não sou propriamente um autor defunto, mas um  defunto autor, para quem a campa foi outro berço; a segunda é que  o escrito ficaria assim mais galante e mais novo. Moisés, que também  contou a sua morte, não a pôs no intróito, mas no cabo: diferença  radical entre este livro e o Pentateuco.', 2, 1),
+('Dom Casmurro', '"Dom Casmurro" conta a história de Bento Santiago (Bentinho), apelidado de Dom Casmurro por ser calado e introvertido.', 7, 'Uma noite destas, vindo da cidade para o Engenho Novo, encontrei num trem da Central um rapaz aqui do bairro, que eu conheço de vista e de chapéu. Cumprimentou-me, sentou-se ao pé de mim, falou da lua e dos ministros, e acabou recitando-me versos. A viagem era curta, e os versos pode ser que não fossem inteiramente maus. Sucedeu, porém, que, como eu estava cansado, fechei os olhos três ou quatro vezes; tanto bastou para que ele interrompesse a leitura e metesse os versos no bolso.', 2, 2),
+('A Divina Comédia', 'A Divina Comédia é basicamente a história da conversão de um pecador ao caminho de Deus.', 2, 'Dante, perdido numa selva escura, erra nela toda a noite. Saindo ao amanhecer, começa a subir por uma colina, quando lhe atravessam a passagem uma pantera, um leão e uma loba, que o repelem para a selva. Aparece-lhe então a imagem de Virgílio, que o reanima e se oferece a tirá-lo de lá, fazendo-o passar pelo Inferno e pelo Purgatório. Beatriz, depois, o guiará ao Paraíso. Dante o segue.', 3, 3),
+('O Cortiço', 'O Cortiço denuncia a exploração e as péssimas condições de vida dos moradores das estalagens ou dos cortiços cariocas do final do século XIX.', 6, 'João Romão foi, dos treze aos vinte e cinco anos, empregado de um vendeiro que enriqueceu entre as quatro paredes de uma suja e obscura taverna nos refolhos do bairro do Botafogo; e tanto economizou do pouco que ganhara nessa dúzia de anos, que, ao retirar-se o patrão para a terra, lhe deixou, em pagamento de ordenados vencidos, nem só a venda com o que estava dentro, como ainda um conto e quinhentos em dinheiro.', 4, 3),
+('O Alienista', 'Após conquistar respeito em sua carreira de médico na Europa e no Brasil, o Dr. Simão Bacamarte retorna à sua terra-natal, Itaguaí, para se dedicar ainda mais a sua profissão.', 6, 'As crônicas da vila de Itaguaí dizem que em tempos remotos vivera ali um certo médico, o Dr. Simão Bacamarte, filho da nobreza da terra e o maior dos médicos do Brasil, de Portugal e das Espanhas.', 2, 2),
+('Missa do Galo', '“Missa do Galo” é narrado em primeira pessoa, por Nogueira, que relembra quando era um jovem de 17 anos que tinha ido ao Rio de Janeiro para estudar e que foi hospedado na casa do escrivão Meneses (viúvo de sua prima).', 7, 'NUNCA PUDE entender a conversação que tive com uma senhora, há muitos anos, contava eu dezessete, ela trinta. Era noite de Natal. Havendo ajustado com um vizinho irmos à missa do galo, preferi não dormir; combinei que eu iria acordá-lo à meia-noite.', 2, 1);
 
 INSERT INTO comentario
-VALUES (1,'Bom!',2,2),
-(2,'Muito Bom!',2,3),
-(3,'Não gostei!',1,1),
-(4,'Discordo...',4,1);
-
-insert into responde 
-values (4, 3, 1);
+VALUES ('Bom!',2,2),
+('Muito Bom!',2,3),
+('Não gostei!',1,1),
+('Discordo...',4,1);
 
 INSERT INTO genero
-VALUES (1, 'Ficção'),
-(2, 'Não ficção'),
-(3,'Ficção científica'),
-(4, 'Ficção fantástica'),
-(5, 'Romance'),
-(6, 'Conto'),
-(7, 'Biografia');
+VALUES ('Ficção'),
+('Não ficção'),
+('Ficção científica'),
+('Ficção fantástica'),
+('Romance'),
+('Conto'),
+('Biografia');
 
 INSERT INTO GeneroHist
-VALUES (1, 1, 1),
-(2, 2, 2),
-(2, 3, 3),
-(3, 4,4),
-(4, 5,5),
-(5, 6,6);
+VALUES (1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5),
+(6, 6);
+
+INSERT INTO classificacao
+VALUES
+('Livre para todos os públicos'),
+('Recomendado para maiores de 12 anos')
+('Recomendado para maiores de 14 anos')
+('Recomendado para maiores de 16 anos')
+('Recomendado para maiores de 18 anos')
+('Recomendado para maiores de 10 anos');
 ```
 ### 10	TABELAS E PRINCIPAIS CONSULTAS<br>
 #### 10.1	CONSULTAS DAS TABELAS COM TODOS OS DADOS INSERIDOS (Todas) <br>
